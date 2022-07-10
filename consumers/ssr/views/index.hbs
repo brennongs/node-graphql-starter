@@ -1,0 +1,14 @@
+<body>
+  <h1>Welcome to HackerNews, you're on {{host}}!</h1>
+
+  <h3>Here's your feed:</h3>
+
+  <ul>
+    {{#each feed}}
+      <li>
+        <a href="{{this.url}}">{{this.id}}</a>
+        <p>{{this.description}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</body>
