@@ -1,14 +1,11 @@
 import 'module-alias/register'
-import path from 'path';
 import express from 'express';
 
 import graphql from './graphql';
-import ssr from './ssr';
 
 const server = express();
 
 server.use('/graphql', graphql);
-server.use('/', ssr);
 
 server.get('/health', (_, response) => {
   response.status(200).send('🤙');
