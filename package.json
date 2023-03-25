@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "build": "rm -rf dist && tsc -p tsconfig.prod.json",
     "dev": "cross-env NODE_ENV=development ts-node-dev --exit-child --respawn consumers/index.ts",
     "start": "ts-node consumers/index.ts"
   },
