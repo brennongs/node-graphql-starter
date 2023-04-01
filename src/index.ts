@@ -1,14 +1,21 @@
+import { createServer } from 'http';
+
 import 'module-alias/register'
-import express from 'express';
 
-import graphql from './graphql';
+import handlers from './handlers';
 
-const server = express();
+const server = createServer();
 
-server.use('/graphql', graphql);
-
-server.get('/health', (_, response) => {
-  response.status(200).send('🤙');
+server.on('request', (request, response) => {
+  if (
+    request.url &&
+    Object.keys(handlers).includes(request.url)
+  ) {
+    handlers[request.url](request, response)
+  } else {
+    response.writeHead(404)
+    response.end(`cannot ${request.method} ${request.url}`)
+  }
 })
 
 const PORT = process.env.PORT || 3000

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { createServer } from '@graphql-yoga/node';
+import { createYoga } from 'graphql-yoga';
 import { makeExecutableSchema } from "@graphql-tools/schema"
 
 /** QUERIES */
@@ -21,4 +21,4 @@ const schema = makeExecutableSchema({
   typeDefs: [typeDefs],
 });
 
-export default createServer({ schema })
+export default createYoga({ schema })
